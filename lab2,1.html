@@ -1,87 +1,130 @@
 <html>
 <head>
-    <title>Dashboard - XCompany</title>
+    <title>Dashboard</title>
+
     <style>
         body {
-            margin-left: 20%;
-            margin-right: 20%;
             background-color: lightgrey;
-            font-family: Arial, sans-serif;
+            margin: 0;
+            font-family: Times New Roman, serif;
         }
-        .container {
-            background-color: white;
-            padding: 15px;
+
+        .wrapper {
+            width: 90%;
+            margin: 20px auto;
             border: 1px solid black;
-            width: 60%;
-             
-            
+            background: white;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            border: 1px solid black;
-          
         }
-        .header, .footer {
-            border-bottom: 1px solid black;
+
+        td {
+            padding: 6px;
+            font-size: 17px;
         }
-        .footer {
-            border-top: 1px solid black;
-            text-align: center;
-            font-size: small;
-        }
-        .nav {
-            text-align: right;
-        }
+
         a {
             color: purple;
-            text-decoration: none;
-            text-decoration: underline; 
-            
+            text-decoration: underline;
+        }
 
+        /* Logo styling */
+        .logo {
+            font-size: 40px;
+            font-weight: bold;
+            color: green;
         }
-        td {
-            padding: 8px;
-            vertical-align: top;
+        .company-text {
+            font-size: 32px;
+            font-weight: bold;
         }
+
+        .left-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
         ul {
-            margin: 0;
+            margin-top: 5px;
             padding-left: 20px;
         }
+
+        ul li {
+            margin-bottom: 5px;
+        }
+
+        hr {
+            margin-top: 4px;
+            margin-bottom: 8px;
+        }
     </style>
+
 </head>
 
 <body>
-<div class="container">
-    <table>
-        <tr class="header">
-            <td><span style="color:green; font-weight:bold;">X</span>Company</td>
-            <td class="nav">Logged in as <a href="#">Bob</a> | <a href="#">Logout</a></td>
-        </tr>
-        <tr>
-            <td>
-                <P>
-                    Account
-                </P>
-            </td>
-        </tr>
 
-        
-        <tr>
-            <td width="35%" style="border-right:1px solid black;"></td>
-           
-            
-               
+<p style="font-size:30px; margin-left:5%; margin-bottom:10px;">
+    E. LOGGED IN DASHBOARD
+</p>
 
-            
-            <td><b>Welcome Bob</b></td>
-        </tr>
+<!-- BIG RECTANGLE BOX -->
+<div class="wrapper">
 
-       
-        <tr class="footer">
-            <td colspan="2">Copyright © 2017</td>
-        </tr>
-    </table>
+<table border="1">
+
+    <!-- HEADER -->
+    <tr>
+        <td width="50%">
+            <span class="logo">X</span>
+            <span class="company-text">Company</span>
+        </td>
+
+        <td align="right">
+            Logged in as <a href="#">Bob</a> |
+            <a href="#">Logout</a>
+        </td>
+    </tr>
+
+    <!-- MAIN SECTION -->
+    <tr height="300px">
+
+        <!-- LEFT SIDEBAR -->
+        <td width="27%" valign="top" style="border-right:1px solid black;">
+            <span class="left-title">Account</span>
+            <hr>
+
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">View Profile</a></li>
+                <li><a href="#">Edit Profile</a></li>
+                <li><a href="#">Change Profile Picture</a></li>
+                <li><a href="#">Change Password</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </td>
+
+        <!-- RIGHT SECTION -->
+        <td valign="top">
+            <span style="font-size:24px; font-weight:bold;">
+                Welcome Bob
+            </span>
+        </td>
+
+    </tr>
+
+    <!-- FOOTER -->
+    <tr>
+        <td colspan="2" align="center" style="padding:10px; font-size:18px;">
+            Copyright © 2017
+        </td>
+    </tr>
+
+</table>
+
 </div>
+
 </body>
 </html>
