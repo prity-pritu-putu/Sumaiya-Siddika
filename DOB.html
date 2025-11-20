@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <title>Date of Birth</title>
+</head>
+<body>
+        Date of Birth<br>
+        dd <input type="text" id="dd" name="dd" value="" size="2" />
+        mm <input type="text" id="mm" name="mm" value="" size="2" />
+        yyyy <input type="text" id="yyyy" name="yyyy" value="" size="4" />
+        <br><br>
+        <input type="button" name="click" value="Submit" onclick="test()" />
+        <p id="uError"></p>
+        <script>
+            function test(){
+                let uError = document.getElementById('uError');
+                let dd = document.getElementById('dd').value;
+                let mm = document.getElementById('mm').value;
+                let yyyy = document.getElementById('yyyy').value;
+                uError.innerHTML = "";
+                uError.style.color = "red";
+
+                // i. Cannot be empty
+                if(dd == "" || mm == "" || yyyy == ""){
+                    uError.innerHTML = "All fields must be filled.";
+                    return;
+                }
+
+                // Convert to numbers
+                let d = dd * 1;
+                let m = mm * 1;
+                let y = yyyy * 1;
+
+                if(isNaN(d) || isNaN(m) || isNaN(y)){
+                    uError.innerHTML = "Must be numbers.";
+                    return;
+                }
+
+                // ii. Valid range
+                if(d < 1 || d > 31){
+                    uError.innerHTML = "Day must be 1-31.";
+                    return;
+                }
+                if(m < 1 || m > 12){
+                    uError.innerHTML = "Month must be 1-12.";
+                    return;
+                }
+                if(y < 1900 || y > 2016){
+                    uError.innerHTML = "Year must be 1900-2016.";
+                    return;
+                }
+
+                uError.innerHTML = "Valid Date!";
+                uError.style.color = "green";
+            }
+        </script>
+</body>
+</html>

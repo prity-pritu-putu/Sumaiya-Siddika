@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <title>Email Validation</title>
+</head>
+<body>
+        Email<br>
+        <input type="text" id="email" name="email" value="" />
+        <br>
+        <input type="button" name="click" value="Submit" onclick="test()" />
+        <p id="uError"></p>
+        
+        <script>
+            function test(){
+                let uError = document.getElementById('uError');
+                let email = document.getElementById('email').value;
+                uError.innerHTML = "";
+                uError.style.color = "red";
+
+                if(email == ""){
+                    uError.innerHTML = "Email cannot be empty.";
+                    return;
+                }
+
+                let at = email.indexOf("@");
+                if(at <= 0 || at == email.length - 1){
+                    uError.innerHTML = "Invalid email format.";
+                    return;
+                }
+
+                let local = email.substring(0, at);
+                let domain = email.substring(at + 1);
+
+                for(let i=0; i<local.length; i++){
+                    let ch = local.charCodeAt(i);
+                    let ok = (ch >= 48 && ch <= 57) || (ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122) || ch == 46 || ch == 45 || ch == 95;
+                    if(!ok){
+                        uError.innerHTML = "Invalid char in local part.";
+                        return;
+                    }
+                }
+
+                let dot = domain.lastIndexOf(".");
+                if(dot <= 0 || dot == domain.length - 1){
+                    uError.innerHTML = "Domain must have valid extension.";
+                    return;
+                }
+
+                let tld = domain.substring(dot + 1);
+                if(tld.length < 2){
+                    uError.innerHTML = "TLD too short.";
+                    return;
+                }
+
+                uError.innerHTML = "Valid email!";
+                uError.style.color = "green";
+            }
+        </script>
+</body>
+</html>

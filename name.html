@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <title>Name Validation</title>
+</head>
+<body>
+        Name<br>
+        <input type="text" id="name" name="name" value="" />
+        <br>
+        <input type="button" name="click" value="Submit" onclick="test()" />
+        <p id="uError"></p>
+        <script>
+            function test(){
+                let uError = document.getElementById('uError');
+                let name = document.getElementById('name').value;
+                uError.innerHTML = "";
+                uError.style.color = "red";
+
+                if(name == ""){
+                    uError.innerHTML = "Name cannot be empty.";
+                    return;
+                }
+
+                let words = name.split(" ");
+                let count = 0;
+                for(let i=0; i<words.length; i++){
+                    if(words[i] != ""){
+                        count = count + 1;
+                    }
+                }
+                if(count < 2){
+                    uError.innerHTML = "Name must contain at least two words.";
+                    return;
+                }
+
+                for(let i=0; i<name.length; i++){
+                    let ch = name.charCodeAt(i);
+                    let ok = (ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122) || ch == 46 || ch == 45 || ch == 32;
+                    if(!ok){
+                        uError.innerHTML = "Only letters, dot, dash, space allowed.";
+                        return;
+                    }
+                }
+
+                let first = name.charCodeAt(0);
+                if(!((first >= 65 && first <= 90) || (first >= 97 && first <= 122))){
+                    uError.innerHTML = "Name must start with a letter.";
+                    return;
+                }
+
+                uError.innerHTML = "Valid!";
+                uError.style.color = "green";
+            }
+        </script>
+</body>
+</html>

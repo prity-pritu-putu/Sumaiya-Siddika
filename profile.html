@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <title>Profile Picture</title>
+</head>
+<body>
+        Profile Picture<br>
+        User Id <input type="text" id="userid" name="userid" value="" />
+        <br>
+        Picture <input type="file" id="picture" name="picture" />
+        <br><br>
+        <input type="button" name="click" value="Submit" onclick="test()" />
+        <p id="uError"></p>
+        <script>
+            function test(){
+                let uError = document.getElementById('uError');
+                let userid = document.getElementById('userid').value;
+                let picture = document.getElementById('picture');
+                uError.innerHTML = "";
+                uError.style.color = "red";
+
+                // i. UserId: not empty and positive number
+                if(userid == ""){
+                    uError.innerHTML = "UserId cannot be empty.";
+                    return;
+                }
+                let idNum = userid * 1;
+                if(isNaN(idNum) || idNum <= 0){
+                    uError.innerHTML = "UserId must be a positive number.";
+                    return;
+                }
+
+                // ii. Picture: must be selected
+                if(picture.files.length == 0){
+                    uError.innerHTML = "Picture cannot be empty.";
+                    return;
+                }
+
+                uError.innerHTML = "Valid!";
+                uError.style.color = "green";
+            }
+        </script>
+</body>
+</html>
