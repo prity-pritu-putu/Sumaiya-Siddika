@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>heloooooooo</title>
+    <script>
+      function handleDeptValidation() {}
+
+      let count = 0;
+      function handleCountTotalReview() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        let valid = false;
+        if (name == "" || !name) {
+          const nameErr = document.getElementById("nameErr");
+          deptErr.innerHTML = "Name cannot be empty";
+        } else {
+          const nameErr = document.getElementById("nameErr");
+          deptErr.innerHTML = "";
+          console.log("name entered: " + name);
+          console.log("Length of name: " + name.length);
+          valid = true;
+
+          if (name.length < 5) {
+            const deptErr = document.getElementById("nameErr");
+            deptErr.innerHTML =
+              "Name must be at least 5 characters long";
+            valid = false;
+          }
+          if (name.length > 10 && name !== "") {
+            const nameErr = document.getElementById("nameErr");
+            nameErr.innerHTML = "Name cannot exceed 10 characters";
+            valid = false;
+          }
+        }
+        if (email == "" || !email) {
+          const emailErr = document.getElementById("emailErr");
+          emailErr.innerHTML = "Email cannot be empty";
+          valid = false;
+        } else {
+          const emailErr = document.getElementById("emailErr");
+          emailErr.innerHTML = "";
+          valid = true;
+
+          console.log("Email entered: " + email);
+          const emailPattern =
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          if (!emailPattern.test(email)) {
+            const emailErr = document.getElementById("emailErr");
+            emailErr.innerHTML = "Please enter a valid email address";
+            valid = false;
+          }
+        }
+        if (valid) {
+          count++;
+        }
+      }
+      function showTotal() {
+        const total = document.getElementById("totalReviews");
+        total.innerHTML = "Total Reviews: " + count;
+      }
+      function hideTotal() {
+        const total = document.getElementById("totalReviews");
+        total.innerHTML = "";
+      }
+    </script>
+</head>
+<body>
+    <h1>Event Registration</h1>
+    <label>Full Name</label>
+    <input type="text" id="name" placeholder="Enter Your Name" />
+    <p id="nameErr" style="color: red"></p>
+    <label>Email(Professional)</label>
+    <input type="email" id="email" placeholder="Enter Your email" />
+    <p id="emailErr" style="color: red"></p>
+    <label>Company/ Institution(Optional)</label>
+    <input type="text" id="company" placeholder="Enter Your Company Name" />
+    <p id="companyErr" style="color: red"></p>
+    <label>Attendance Type:</label>
+    <br>
+    <input type="radio" name="attendance" value="Virtual"> Virtual  
+    <br>
+    <input type="radio" name="attendance" value="In-Person"> In-Person
+    <br>
+    <br>
+    <button onclick="handleDeptValidation()" style="background-color: rgb(126, 126, 220);"> Register </button>
+    <button onclick="handleDeptValidation()" style="margin-left: 10px;">Hide Event Analytics</button>
+    <button onclick="handleCountTotalReview()">
+      Click Here to increment total count
+    </button>
+    <button onclick="showTotal()">Click here to see total count</button>
+    <button onclick="hideTotal()">Click here to hide total count</button>
+    <p id="totalReviews"></p>
+
+</body>
+</html>
